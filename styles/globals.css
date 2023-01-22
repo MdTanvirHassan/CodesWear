@@ -11,7 +11,8 @@ html {
 
 @layer base {
   body {
-    @apply  tracking-wide bg-[#000000] text-[#ecf0f3]
+    @apply  tracking-wide
+     /* bg-[#000000] text-[#ecf0f3] */
     /* bg-[#ecf0f3] text-[#1f2937] */
   }
 
@@ -31,11 +32,11 @@ html {
     @apply text-white
   }
   li {
-    @apply cursor-pointer hover:border-b-gray-500 text-[#5651e5] active:text-green-300 hover:text-orange-200 ease-in duration-300
+    @apply cursor-pointer hover:border-b-gray-500  active:text-green-300 hover:text-orange-200 ease-in duration-300
    }
 
   button {
-    @apply shadow-md shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white
+    @apply shadow-md shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-pink-600 to-pink-400 text-white
   }
 }
 

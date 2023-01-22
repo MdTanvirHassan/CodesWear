@@ -1,11 +1,11 @@
-import React from 'react'
-import { useRouter } from 'next/router'
+import React from "react";
+import { useRouter } from "next/router";
 
 const Post = () => {
-  const router = useRouter()
-  const { slug } = router.query
+  const router = useRouter();
+  const { slug } = router.query;
 
-  return <p>Post: {slug}</p>
-}
+  return <p>Post: {slug}</p>;
+};
 
-export default Post
+export default Post;
