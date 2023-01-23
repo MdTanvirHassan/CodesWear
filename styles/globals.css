@@ -29,7 +29,7 @@ html {
   }
   
   p{
-    @apply text-white
+    @apply tracking-normal
   }
   li {
     @apply cursor-pointer hover:border-b-pink-500  active:text-green-300 hover:text-pink-500 ease-in duration-300

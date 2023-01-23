@@ -2,17 +2,19 @@ import Image from 'next/image'
 import React from 'react'
 import NavLogo from '../public/Assets/navLogo.png'
 import {FaFacebook} from 'react-icons/fa'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
     <div>
-      <footer className="text-gray-500 body-font">
+      <footer className="text-gray-500 body-font shadow-lg border-t-2">
   <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
     <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-      <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+    <Link href={'/'}><div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 cursor-pointer">
         <Image src={NavLogo} alt=".." width={200} height={20}/>
         {/* <span className="ml-3 text-xl"></span> */}
-      </a>
+      </div>
+      </Link>
       <p className="mt-2 px-3 text-sm text-gray-500">Wear the '<code/>' Premium coding tshirts, hoodies and apparals</p>
     </div>
     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
@@ -36,9 +38,11 @@ const Footer = () => {
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CUSTOMER SERVICE</h2>
         <nav className="list-none mb-10">
-          <li>
-            <a className="text-gray-500 hover:text-gray-800">Contact Us</a>
+         <Link href={'/contact'}> 
+         <li>
+            <div className="text-gray-500 hover:text-gray-800 cursor-pointer">Contact Us</div>
           </li>
+        </Link>
           <li>
             <a className="text-gray-500 hover:text-gray-800">About Us</a>
           </li>
