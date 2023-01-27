@@ -39,4 +39,7 @@ html {
     @apply shadow-md shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-pink-600 to-pink-400 text-white
   }
 }
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import 'swiper/css/navigation';
 
