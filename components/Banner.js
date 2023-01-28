@@ -2,10 +2,10 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import Image from "next/image";
-import slider from "../public/assets/banner1.png";
-import slider2 from "../public/assets/banner-4.png";
-import slider3 from "../public/assets/banner-2.png";
-import slider4 from "../public/assets/banner1.png";
+import slider from "../public/assets/banner1.webp";
+import slider2 from "../public/assets/banner-1.webp";
+import slider3 from "../public/assets/banner-2_1.webp";
+import slider4 from "../public/assets/banner-3_2.webp";
 
 const Banner = () => {
   return (
@@ -25,14 +25,14 @@ const Banner = () => {
         className="mySwiper">
         <SwiperSlide>
           <Image
-            src={slider2}
+            src={slider}
             alt=".."
             className="w-full h-[30vh] md:h-[60vh]"
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
-            src={slider}
+            src={slider2}
             alt=".."
             className="w-full h-[30vh] md:h-[60vh]"
           />
