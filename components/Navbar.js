@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import NavLogo from "../public/Assets/navLogo.png";
-import { AiOutlineShoppingCart,AiFillCloseCircle, AiFillPlusSquare, AiFillMinusSquare } from "react-icons/ai";
+import { AiOutlineShoppingCart,AiFillCloseCircle, AiFillPlusSquare, AiFillMinusSquare, AiFillShopping } from "react-icons/ai";
 //import {  } from "react-icons/ai";
 
 const Navbar = () => {
@@ -46,7 +46,7 @@ const Navbar = () => {
         <AiOutlineShoppingCart onClick={toggleCart}/>
       </div>
 
-      <div ref={ref} className="h-full sidebar absolute right-0 top-0 p-10 bg-pink-100 transform transition-transform translate-x-full z-10">
+      <div ref={ref} className="hidden h-full sidebar absolute right-0 top-0 p-10 bg-pink-100 transform transition-transform translate-x-full z-10">
           <h2 className="text-xl font-bold text-center">Shopping Cart</h2>
           <span onClick={toggleCart} className="absolute top-5 right-2  cursor-pointer text-pink-500 text-2xl">
             <AiFillCloseCircle/>
@@ -75,8 +75,8 @@ const Navbar = () => {
             </li>
           </ol>
 
-          <button type="button" class="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  mr-2 mb-2">
-          <AiOutlineShoppingCart className="text-lg mx-1"/>
+          <button type="button" className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  mr-2 mb-2">
+          <AiFillShopping className="text-lg mx-1"/>
           Proceed
         </button>
       </div>
