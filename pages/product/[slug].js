@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { AiFillShopping } from "react-icons/ai";
 
 const Post = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const [pin, setPin]=useState()
+  const [service, setService]=useState(false)
 
+  const checkServiceability= async ()=>{
+    let pins = await fetch(`http://localhost:3000/api/pincode`)
+    let pinJson = await pins.json()
+
+    if(pinJson.includes(parseInt(pin))){
+      setService(true);
+    }
+    else{
+      setService(false);
+    }
+  }
+
+  const onChangePin= (e)=>{
+    setPin(e.target.value);
+  }
   return (
     <>
       <section className="text-gray-600  overflow-hidden">
@@ -15,17 +32,17 @@ const Post = () => {
             <div className="lg:w-1/2 block relative h-[45vh] md:h-[70vh] rounded overflow-hidden shadow-lg">
               <img
                 alt="e-commerce"
-                className=" object-fill object-center w-full h-full m-auto block px-8 md:px-20 rounded"
+                className=" object-fill object-center w-full h-full m-auto block px-8 md:px-24 rounded"
                 src="https://m.media-amazon.com/images/I/71RYmFd2sPL._AC_UX385_.jpg"
               />
             </div>
 
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                BRAND NAME
+                  CODESWEAR
               </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                The Catcher in the Rye
+              <h1 className="text-gray-900 text-3xl font-medium mb-1">
+                Wear Your Code
               </h1>
               <div className="flex mb-4">
                 <span className="flex items-center">
@@ -157,11 +174,14 @@ const Post = () => {
                 </div>
               </div>
               <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
+                <span className=" font-medium text-2xl text-gray-900">
                   $58.00
                 </span>
-                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                  <AiFillShopping className="text-xl mx-1" /> Add to Cart
+                <button className="flex ml-4 text-white text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
+                  Buy Now
+                </button>
+                <button className="flex ml-2 text-white text-sm  border-0 py-2 px-2 focus:outline-none rounded">
+                  <AiFillShopping className="text-xl mx-1 hidden md:flex" /> Add to Cart
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg
@@ -175,6 +195,15 @@ const Post = () => {
                   </svg>
                 </button>
               </div>
+              <div className="pin mt-2 flex text-sm">
+                <input onClick={onChangePin} type="text" className="p-2 border border-gray-500 rounded-md" placeholder="Enter Your Pin Code"/> 
+                <button onClick={checkServiceability} className="flex ml-4 text-white bg-pink-500 text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
+                  Pin Code
+                </button>
+                 </div>
+                 {(!service && service!==null) && <div className="text-sm text-red-700 mt-1">Sorry! We do not serve the area.</div> }
+                
+                  {(service && service!==null) && <div className="text-sm text-green-700 mt-1">Yay! We serve the area.</div> }
             </div>
           </div>
         </div>
