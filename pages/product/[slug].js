@@ -5,30 +5,28 @@ import { AiFillShopping } from "react-icons/ai";
 const Post = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const [pin, setPin]=useState()
-  const [service, setService]=useState(false)
+  const [pin, setPin] = useState()
+  const [service, setService] = useState()
 
-  const checkServiceability= async ()=>{
+  const checkServiceability = async () => {
     let pins = await fetch(`http://localhost:3000/api/pincode`)
-    let pinJson = await pins.json()
+    let pinJson = await pins.json();
 
-    if(pinJson.includes(parseInt(pin))){
-      setService(true);
+    if (pinJson.includes(parseInt(pin))) {
+      setService(true)
+    } else {
+      setService(false)
     }
-    else{
-      setService(false);
-    }
-  }
+  };
 
-  const onChangePin= (e)=>{
-    setPin(e.target.value);
-  }
+  const onChangePin = (e) => {
+    setPin(e.target.value)
+  };
   return (
     <>
       <section className="text-gray-600  overflow-hidden">
         <div className="container px-5 py-16 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            
             <div className="lg:w-1/2 block relative h-[45vh] md:h-[70vh] rounded overflow-hidden shadow-lg">
               <img
                 alt="e-commerce"
@@ -39,7 +37,7 @@ const Post = () => {
 
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  CODESWEAR
+                CODESWEAR
               </h2>
               <h1 className="text-gray-900 text-3xl font-medium mb-1">
                 Wear Your Code
@@ -196,14 +194,29 @@ const Post = () => {
                 </button>
               </div>
               <div className="pin mt-2 flex text-sm">
-                <input onClick={onChangePin} type="text" className="p-2 border border-gray-500 rounded-md" placeholder="Enter Your Pin Code"/> 
-                <button onClick={checkServiceability} className="flex ml-4 text-white bg-pink-500 text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
+                <input
+                  onClick={onChangePin}
+                  type="text"
+                  className="p-2 border border-gray-500 rounded-md"
+                  placeholder="Enter Your Pin Code"
+                />
+                <button
+                  onClick={checkServiceability}
+                  className="flex ml-4 text-white bg-pink-500 text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
                   Pin Code
                 </button>
-                 </div>
-                 {(!service && service!==null) && <div className="text-sm text-red-700 mt-1">Sorry! We do not serve the area.</div> }
-                
-                  {(service && service!==null) && <div className="text-sm text-green-700 mt-1">Yay! We serve the area.</div> }
+              </div>
+              {(service!=null && !service ) && 
+                <div className="text-sm text-red-700 mt-1">
+                  Sorry! We do not serve the area yet.
+                </div>
+              }
+
+              {(service && service != null) && 
+                <div className="text-sm text-green-700 mt-1">
+                  Yay! We serve the area.
+                </div>
+              }
             </div>
           </div>
         </div>
