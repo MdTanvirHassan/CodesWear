@@ -4,8 +4,8 @@ import React from 'react'
 const Tshirts = () => {
   return (
     <div>
-      <section className="text-gray-600 body-font">
-  <div className="container px-5 py-24 mx-auto">
+      <section className="text-gray-600 ">
+  <div className=" px-5 py-24 mx-auto">
     <div className="grid md:grid-cols-4 gap-10 -m-4">
       
       <div className=" p-4 px-10 w-full shadow-lg shadow-gray-500 rounded-lg">
