@@ -42,10 +42,11 @@ export default function App({ Component, pageProps }) {
     saveCart(newCart)
   }
 
-  const clearCart = () =>{
-    setCart({})
-    saveCart({})
+  const clearCart = () => {
+    localStorage.removeItem('cart');
+    setCart({});
   }
+  
 
   const RemoveFromCart= (itemCode, qty, price, name, size, variant)=>{
     let newCart= JSON.parse(JSON.stringify(cart));
