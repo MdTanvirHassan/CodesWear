@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { AiFillShopping } from "react-icons/ai";
 
-const Post = () => {
+const Post = ({ addToCart }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const [pin, setPin] = useState()
-  const [service, setService] = useState()
+  const [pin, setPin] = useState();
+  const [service, setService] = useState();
 
   const checkServiceability = async () => {
-    let pins = await fetch(`http://localhost:3000/api/pincode`)
+    let pins = await fetch(`http://localhost:3000/api/pincode`);
     let pinJson = await pins.json();
 
     if (pinJson.includes(parseInt(pin))) {
-      setService(true)
+      setService(true);
     } else {
-      setService(false)
+      setService(false);
     }
   };
 
   const onChangePin = (e) => {
-    setPin(e.target.value)
+    setPin(e.target.value);
   };
   return (
     <>
@@ -178,8 +178,20 @@ const Post = () => {
                 <button className="flex ml-4 text-white text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
                   Buy Now
                 </button>
-                <button className="flex ml-2 text-white text-sm  border-0 py-2 px-2 focus:outline-none rounded">
-                  <AiFillShopping className="text-xl mx-1 hidden md:flex" /> Add to Cart
+                <button
+                  onClick={() =>
+                    addToCart(
+                      slug,
+                      1,
+                      499,
+                      "Wear the Code (L, Red)",
+                      "L",
+                      "Red"
+                    )
+                  }
+                  className="flex ml-2 text-white text-sm  border-0 py-2 px-2 focus:outline-none rounded">
+                  <AiFillShopping className="text-xl mx-1 hidden md:flex" /> Add
+                  to Cart
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg
@@ -206,17 +218,17 @@ const Post = () => {
                   Pin Code
                 </button>
               </div>
-              {(service!=null && !service ) && 
+              {service != null && !service && (
                 <div className="text-sm text-red-700 mt-1">
                   Sorry! We do not serve the area yet.
                 </div>
-              }
+              )}
 
-              {(service && service != null) && 
+              {service && service != null && (
                 <div className="text-sm text-green-700 mt-1">
                   Yay! We serve the area.
                 </div>
-              }
+              )}
             </div>
           </div>
         </div>
