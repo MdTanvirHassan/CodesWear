@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }) {
   const clearCart = () => {
     localStorage.removeItem('cart');
     setCart({});
+    localStorage.clear();
   }
   
 

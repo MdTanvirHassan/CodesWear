@@ -204,7 +204,7 @@ const Post = ({ addToCart }) => {
                 <input
                   onClick={onChangePin}
                   type="text"
-                  className="p-2 border border-gray-500 rounded-md"
+                  className="p-1 border border-gray-500 rounded-md"
                   placeholder="Enter Your Pin Code"
                 />
                 <button

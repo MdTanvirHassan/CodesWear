@@ -32,6 +32,13 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            src={slider2}
+            alt=".."
+            className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
             src={slider3}
             alt=".."
             className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
@@ -40,13 +47,6 @@ const Banner = () => {
         <SwiperSlide>
           <Image
             src={slider4}
-            alt=".."
-            className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src={slider2}
             alt=".."
             className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
           />

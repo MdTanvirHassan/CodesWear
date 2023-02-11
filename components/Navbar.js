@@ -23,7 +23,7 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
   const ref = useRef();
 
   return (
-    <div className="flex flex-col md:flex-row justify-center md:justify-start items-center py-2 shadow-lg">
+    <div className="flex flex-col md:flex-row sticky top-0 bg-white z-10 justify-center md:justify-start items-center py-2 shadow-lg">
       <div className="logo mx-5">
         <Link href={"/"}>
           <Image src={NavLogo} width={200} height={40} alt="" />
@@ -48,12 +48,15 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
       </div>
       {/* //todo cart */}
       <div className="cart absolute right-0 top-4 text-3xl md:text-3xl mx-4 text-pink-500 hover:text-pink-600 cursor-pointer">
-        <AiOutlineShoppingCart onClick={toggleCart} />
+        <span className="relative inline-flex " onClick={toggleCart}>
+        <AiOutlineShoppingCart  />
+        {/* <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-pink-50 rounded-full -top-2 -right-2 ">{Object.keys(cart).qty}</div> */}
+        </span>
       </div>
 
       <div
         ref={ref}
-        className=" h-full sidebar absolute right-0 top-0 p-10 bg-pink-100 transform transition-transform translate-x-full z-10">
+        className={`h-screen sidebar absolute right-0 top-0 p-10 bg-pink-50 transform transition-transform ${Object.keys(cart).length === 0? 'translate-x-full':'translate-x-0'} z-10`}>
         <h2 className="text-xl font-bold text-center">Shopping Cart</h2>
         <span
           onClick={toggleCart}
@@ -105,18 +108,19 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
             );
           })}
         </ol>
-        <div className="flex">
-          <button
-            onClick={() => clearCart}
+        <span className='font-bold py-2'>SubTotal: ${subTotal}</span>
+        <div className="flex mt-5">
+          <Link href={'/checkout'}><button
+            // onClick={() => clearCart}
             type="button"
-            className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  mr-2 mb-2">
+            className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center  mr-2 mb-2">
             <AiFillShopping className="text-lg mx-1" />
             Proceed
-          </button>
+          </button></Link>
           <button
             onClick={() => {clearCart}}
             type="button"
-            className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  mr-2 mb-2">
+            className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center  mr-2 mb-2">
            
             Clear Cart
           </button>
