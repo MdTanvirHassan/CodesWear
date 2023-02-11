@@ -2,10 +2,10 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import Image from "next/image";
-import slider from "../public/assets/unsplash1.jpg";
-import slider2 from "../public/assets/unsplash2.jpg";
-import slider3 from "../public/assets/unsplash3.jpg";
-import slider4 from "../public/assets/unsplash2.jpg";
+import slider from "../public/assets/unsplash2.jpg";
+import slider2 from "../public/assets/unsplash3.jpg";
+import slider3 from "../public/assets/banner1.png";
+import slider4 from "../public/assets/banner-4.png";
 
 const Banner = () => {
   return (
@@ -25,28 +25,28 @@ const Banner = () => {
         className="mySwiper">
         <SwiperSlide>
           <Image
-            src={slider2}
+            src={slider}
             alt=".."
-            className="w-full h-[30vh] md:h-[70vh] object-cover object-center "
+            className="w-full h-[30vh] md:h-[70vh] object-fit object-center "
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
             src={slider3}
             alt=".."
-            className="w-full h-[30vh] md:h-[70vh] object-cover object-center"
+            className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
             src={slider4}
             alt=".."
-            className="w-full h-[30vh] md:h-[70vh] object-cover object-center"
+            className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
-            src={slider}
+            src={slider2}
             alt=".."
             className="w-full h-[30vh] md:h-[70vh] object-fit object-center"
           />
