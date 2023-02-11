@@ -2,10 +2,10 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import Image from "next/image";
-import slider from "../public/assets/unsplash2.jpg";
-import slider2 from "../public/assets/unsplash3.jpg";
-import slider3 from "../public/assets/banner1.png";
-import slider4 from "../public/assets/banner-4.png";
+import slider from "../public/assets/banner.jpg";
+import slider2 from "../public/assets/slide3.jpg";
+import slider3 from "../public/assets/slide2.jpg";
+import slider4 from "../public/assets/slide4.jpg";
 
 const Banner = () => {
   return (
