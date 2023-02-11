@@ -2,7 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import Image from "next/image";
-import slider from "../public/assets/slider5.jpg";
+import slider from "../public/assets/slide5.jpg";
 import slider2 from "../public/assets/slide6.jpg";
 import slider3 from "../public/assets/slide7.jpg";
 import slider4 from "../public/assets/slide8.jpg";
