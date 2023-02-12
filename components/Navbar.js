@@ -118,7 +118,7 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
             Proceed
           </button></Link>
           <button
-            onClick={() => {clearCart}}
+            onClick={clearCart}
             type="button"
             className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center  mr-2 mb-2">
            
