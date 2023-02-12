@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Company from '../public/Assets/navLogo.png'
+import Company from '../public/assets/navLogo.png'
 import Image from "next/image";
 
 const Login = () => {
@@ -14,6 +14,8 @@ const Login = () => {
               className="mx-auto h-12 w-auto"
               src={Company}
               alt="Company"
+              width={200}
+               height={40}
             /></Link>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your account
