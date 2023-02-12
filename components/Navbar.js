@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
-import NavLogo from "../public/Assets/navLogo.png";
+import NavLogo from "../public/assets/navLogo.png";
 import {
   AiOutlineShoppingCart,
   AiFillCloseCircle,
@@ -9,6 +9,7 @@ import {
   AiFillMinusSquare,
   AiFillShopping,
 } from "react-icons/ai";
+import {MdAccountCircle} from "react-icons/md"
 
 const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
   const toggleCart = () => {
@@ -47,9 +48,11 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
         </ul>
       </div>
       {/* //todo cart */}
-      <div className="cart absolute right-0 top-4 text-3xl md:text-3xl mx-4 text-pink-500 hover:text-pink-600 cursor-pointer">
+      <div className="flex cart absolute right-0 top-4 text-3xl md:text-3xl mx-4 text-pink-500 hover:text-pink-600 cursor-pointer">
+        <Link href={'/login'}><MdAccountCircle className="mx-2"/></Link>
+      
         <span className="relative inline-flex " onClick={toggleCart}>
-        <AiOutlineShoppingCart  />
+        <AiOutlineShoppingCart className="" />
         {/* <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-pink-50 rounded-full -top-2 -right-2 ">{Object.keys(cart).qty}</div> */}
         </span>
       </div>
