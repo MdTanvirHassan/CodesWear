@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Company from '../public/assets/navLogo.png'
+import Company from '../public/Assets/navLogo.png'
 import Image from "next/image";
 
 const Login = () => {
