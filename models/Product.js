@@ -11,5 +11,5 @@ const ProductSchema = new mongoose.Schema({
     size: {type: String},
     color: {type: String},
 },{timestamps: true});
-
+mongoose.models= {}
 export default mongoose.model('Product', ProductSchema);

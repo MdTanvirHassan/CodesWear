@@ -10,5 +10,5 @@ const OrderSchema = new mongoose.Schema({
     amount: {type: String, required: true},
     status: {type: String, required: true},
 },{timestamps: true});
-
+mongoose.models= {}
 export default mongoose.model('Order', OrderSchema);
