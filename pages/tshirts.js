@@ -10,14 +10,14 @@ const Tshirts = ({ products }) => {
       <h2 className="text-center my-5">T-shirts</h2>
       <section className="text-gray-600 ">
         <div className=" px-5  mx-auto">
-          <div className="grid md:grid-cols-4 gap-10 m-auto">
+          <div className="grid md:grid-cols-4 2xl:grid-cols-5 gap-8 m-auto">
             {products.map((item) => {
               return (
                 <div
                   key={item._id}
                   className=" p-4 px-10 w-full shadow-lg shadow-gray-500 rounded-lg">
                   <Link passHref={true} href={`/product/${item.slug}`}>
-                    <div className="block relative h-[50vh] rounded overflow-hidden  cursor-pointer p-4">
+                    <div className="block relative h-[50vh] rounded overflow-hidden  cursor-pointer ">
                       <img
                         alt="e-commerce"
                         className="object-fill object-center w-full h-full m-auto block"
