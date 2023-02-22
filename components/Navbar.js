@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
-import NavLogo from "../public/assets/navLogo.png";
+import NavLogo from "../public/assets/nav.png";
 import {
   AiOutlineShoppingCart,
   AiFillCloseCircle,

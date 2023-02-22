@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Company from "../public/assets/navLogo.png";
+import Company from "../public/assets/nav.png";
 import Image from "next/image";
 
 const Signup = () => {
@@ -11,7 +11,7 @@ const Signup = () => {
           <div>
             <Link href={"/"}>
               <Image
-                className="mx-auto h-12 w-auto"
+                className="mx-auto"
                 src={Company}
                 alt="Company"
                 width={200}

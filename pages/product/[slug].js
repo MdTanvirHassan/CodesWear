@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { AiFillShopping } from "react-icons/ai";
+import Product from "@/models/Product";
+import mongoose from "mongoose";
 
-const Post = ({ addToCart }) => {
+
+const Post = ({ addToCart, product, variants }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
@@ -146,7 +149,7 @@ const Post = ({ addToCart }) => {
                   <span className="mr-3">Size</span>
                   <div className="relative">
                     <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                      <option>SM</option>
+                      <option>S</option>
                       <option>M</option>
                       <option>L</option>
                       <option>XL</option>
@@ -231,5 +234,29 @@ const Post = ({ addToCart }) => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readystate) {
+    await mongoose.connect(process.env.MONGO_URI);
+  }
+
+  let product = await Product.findOne({slug: context.query.slug});
+  let variants = await Product.find({title: product.title});
+  let colorSizeSlug= {}
+  for(let item of variants){
+        if(Object.keys(colorSizeSlug).includes(item.color)){
+          colorSizeSlug[item.color][item.size] = {slug: item.slug}
+        }
+        else{
+          colorSizeSlug[item.color]= {}
+          colorSizeSlug[item.color][item.size] = {slug: item.slug}
+        }
+  }
+  
+
+  return {
+    props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(variants)) }, // will be passed to the page component as props
+  };
+}
 
 export default Post;
