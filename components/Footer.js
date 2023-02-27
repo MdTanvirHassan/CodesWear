@@ -15,23 +15,23 @@ const Footer = () => {
         {/* <span className="ml-3 text-xl"></span> */}
       </div>
       </Link>
-      <p className="mt-2 px-3 text-sm text-gray-500">Wear the '<code/>' Premium coding tshirts, hoodies and apparals</p>
+      <p className="mt-2 px-4 text-sm text-gray-500">Wear the &lt;code/&gt; <br /> Premium coding t-shirts, hoodies and apparels</p>
     </div>
     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">SHOP</h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-500 hover:text-gray-800">First Link</a>
+            <Link legacyBehavior href={'/tshirts'}><a className="text-gray-500 hover:text-gray-800">T-shirts</a></Link>
           </li>
           <li>
-            <a className="text-gray-500 hover:text-gray-800">Second Link</a>
+          <Link legacyBehavior href={'/hoodies'}><a className="text-gray-500 hover:text-gray-800">Hoodies</a></Link>
           </li>
           <li>
-            <a className="text-gray-500 hover:text-gray-800">Third Link</a>
+          <Link legacyBehavior href={'/stickers'}><a className="text-gray-500 hover:text-gray-800">Stickers</a></Link>
           </li>
           <li>
-            <a className="text-gray-500 hover:text-gray-800">Fourth Link</a>
+          <Link legacyBehavior href={'/mugs'}><a className="text-gray-500 hover:text-gray-800">Mugs</a></Link>
           </li>
         </nav>
       </div>

@@ -43,7 +43,7 @@ const Post = ({ addToCart, product, variants }) => {
               <img
                 alt="e-commerce"
                 className=" object-fill object-center w-full h-full m-auto block px-8 md:px-24 rounded"
-                src="https://m.media-amazon.com/images/I/71RYmFd2sPL._AC_UX385_.jpg"
+                src={product.img}
               />
             </div>
 
@@ -52,7 +52,7 @@ const Post = ({ addToCart, product, variants }) => {
                 CODESWEAR
               </h2>
               <h1 className="text-gray-900 text-3xl font-medium mb-1">
-                Wear Your Code
+                {product.title}({product.size}/{product.color})
               </h1>
               <div className="flex mb-4">
                 <span className="flex items-center">
@@ -145,7 +145,7 @@ const Post = ({ addToCart, product, variants }) => {
                 </span>
               </div>
               <p className="leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente sunt cum ipsa quis beatae aspernatur sit rem aliquam non minima.
+                {product.desc}
               </p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
@@ -176,7 +176,7 @@ const Post = ({ addToCart, product, variants }) => {
                       {Object.keys(variants[color]).includes('M') && <option value={'M'}>M</option>}
                       {Object.keys(variants[color]).includes('L') && <option value={'L'}>L</option>}
                       {Object.keys(variants[color]).includes('XL') && <option value={'XL'}>XL</option>}
-                      {Object.keys(variants[color]).includes('XXL') && <option value={'XXL'}>XxL</option>}
+                      {Object.keys(variants[color]).includes('XXL') && <option value={'XXL'}>XXL</option>}
                     
                     </select>
                     <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
@@ -196,7 +196,7 @@ const Post = ({ addToCart, product, variants }) => {
               </div>
               <div className="flex">
                 <span className=" font-medium text-2xl text-gray-900">
-                  $58.00
+                  ${product.price}
                 </span>
                 <button className="flex ml-4 text-white text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
                   Buy Now
@@ -206,10 +206,10 @@ const Post = ({ addToCart, product, variants }) => {
                     addToCart(
                       slug,
                       1,
-                      499,
-                      "Wear the Code (L, Red)",
-                      "L",
-                      "Red"
+                      product.price,
+                      product.title,
+                      size,
+                      color
                     )
                   }
                   className="flex ml-2 text-white text-sm  border-0 py-2 px-2 focus:outline-none rounded">

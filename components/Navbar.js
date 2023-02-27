@@ -59,7 +59,7 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
 
       <div
         ref={ref}
-        className={`h-screen sidebar absolute right-0 top-0 p-10 bg-pink-50 transform transition-transform ${Object.keys(cart).length === 0? 'translate-x-full':'translate-x-0'} z-10`}>
+        className={`h-screen sidebar absolute right-0 top-0 p-10 bg-pink-50 z-10 backdrop-filter backdrop-blur-lg shadow-xl ring-1 ring-gray-900/5 transform transition-transform ${Object.keys(cart).length === 0? 'translate-x-full':'translate-x-0'} z-10`}>
         <h2 className="text-xl font-bold text-center">Shopping Cart</h2>
         <span
           onClick={toggleCart}
@@ -75,7 +75,7 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
               <li key={k} className="hover:text-black">
                 <div className="item flex my-5">
                   <div className="w-2/3 font-semibold text-sm">
-                    {cart[k].name}
+                    {cart[k].name}({cart[k].size}/{cart[k].variant})
                   </div>
                   <div className="w-1/3 flex font-semibold text-center justify-center items-center text-lg">
                     <AiFillMinusSquare
