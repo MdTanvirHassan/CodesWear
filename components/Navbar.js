@@ -59,7 +59,7 @@ const Navbar = ({ cart, addToCart, RemoveFromCart, clearCart, subTotal }) => {
 
       <div
         ref={ref}
-        className={`h-screen sidebar absolute right-0 top-0 p-10 bg-pink-50 z-10 backdrop-filter backdrop-blur-lg shadow-xl ring-1 ring-gray-900/5 transform transition-transform ${Object.keys(cart).length === 0? 'translate-x-full':'translate-x-0'} z-10`}>
+        className={`h-screen sidebar absolute overflow-y-scroll right-0 top-0 p-10 bg-pink-50 z-10 backdrop-filter backdrop-blur-lg shadow-xl ring-1 ring-gray-900/5 transform transition-transform ${Object.keys(cart).length === 0? 'translate-x-full':'translate-x-0'} z-10`}>
         <h2 className="text-xl font-bold text-center">Shopping Cart</h2>
         <span
           onClick={toggleCart}

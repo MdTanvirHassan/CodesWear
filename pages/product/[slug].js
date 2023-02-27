@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 import { AiFillShopping } from "react-icons/ai";
 import Product from "@/models/Product";
 import mongoose from "mongoose";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-const Post = ({ addToCart, product, variants }) => {
+const Post = ({ buyNow, addToCart, product, variants }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
@@ -17,8 +18,28 @@ const Post = ({ addToCart, product, variants }) => {
 
     if (pinJson.includes(parseInt(pin))) {
       setService(true);
+      toast.success('Your Pin Code Serviceable!', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } else {
       setService(false);
+      toast.error('Sorry, Pin Code not Serviceable!', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 
@@ -30,14 +51,27 @@ const Post = ({ addToCart, product, variants }) => {
   const [size, setSize] = useState(product.size);
 
   const refreshVariant = (newsize, newcolor) => {
-    const url = `http://localhost:3000/product/${variants[newcolor][newsize]['slug']}`
+    const url = `http://localhost:3000/product/${variants[newcolor][newsize]["slug"]}`;
     window.location = url;
-  }
+  };
 
   return (
     <>
       <section className="text-gray-600  overflow-hidden">
         <div className="container px-5 py-16 mx-auto">
+          <ToastContainer
+            position="top-center"
+            autoClose={1500}
+            limit={5}
+            hideProgressBar
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <div className="lg:w-1/2 block relative h-[45vh] md:h-[70vh] rounded overflow-hidden shadow-lg">
               <img
@@ -144,40 +178,116 @@ const Post = ({ addToCart, product, variants }) => {
                   </a>
                 </span>
               </div>
-              <p className="leading-relaxed">
-                {product.desc}
-              </p>
+              <p className="leading-relaxed">{product.desc}</p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
                   <span className="mr-3">Color</span>
-                  
-                      {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size) && <button onClick={()=>{refreshVariant(size, 'red')}} className={`border-2 rounded-full bg-none bg-red-700 hover:bg-red-600 w-6 h-6 focus:outline-none ${color==='red'? 'border-black' : 'border-gray-300'}`}></button>}
 
-                      {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size) && <button onClick={()=>{refreshVariant(size, 'blue')}} className={`border-2 rounded-full bg-none bg-blue-700 hover:bg-blue-600 w-6 h-6 focus:outline-none ${color==='blue'? 'border-black' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("red") &&
+                    Object.keys(variants["red"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "red");
+                        }}
+                        className={`border-2 rounded-full bg-red-700 hover:bg-red-600 w-6 h-6 focus:outline-none ${
+                          color === "red" ? "border-black" : "border-gray-300"
+                        }`}></button>
+                    )}
 
-                      {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size) && <button onClick={()=>{refreshVariant(size, 'black')}} className={`border-2 rounded-full bg-none bg-black hover:bg-black w-6 h-6 focus:outline-none ${color==='black'? 'border-pink-600' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("blue") &&
+                    Object.keys(variants["blue"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "blue");
+                        }}
+                        className={`border-2 rounded-full bg-blue-700 hover:bg-blue-600 w-6 h-6 focus:outline-none ${
+                          color === "blue" ? "border-black" : "border-gray-300"
+                        }`}></button>
+                    )}
 
-                      {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size) && <button onClick={()=>{refreshVariant(size, 'white')}} className={`border-2 rounded-full bg-none bg-white hover:bg-white w-6 h-6 focus:outline-none ${color==='white'? 'border-black' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("black") &&
+                    Object.keys(variants["black"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "black");
+                        }}
+                        className={`border-2 rounded-full bg-black hover:bg-black w-6 h-6 focus:outline-none ${
+                          color === "black"
+                            ? "border-pink-600"
+                            : "border-gray-300"
+                        }`}></button>
+                    )}
 
-                      {Object.keys(variants).includes('pink') && Object.keys(variants['pink']).includes(size) && <button onClick={()=>{refreshVariant(size, 'pink')}} className={`border-2 rounded-full bg-none bg-pink-700 hover:bg-pink-600 w-6 h-6 focus:outline-none ${color==='pink'? 'border-black' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("white") &&
+                    Object.keys(variants["white"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "white");
+                        }}
+                        className={`border-2 rounded-full bg-white hover:bg-white w-6 h-6 focus:outline-none ${
+                          color === "white" ? "border-black" : "border-gray-300"
+                        }`}></button>
+                    )}
 
-                      {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size) && <button onClick={()=>{refreshVariant(size, 'green')}} className={`border-2 rounded-full bg-none bg-green-700 hover:bg-green-600 w-6 h-6 focus:outline-none ${color==='green'? 'border-black' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("pink") &&
+                    Object.keys(variants["pink"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "pink");
+                        }}
+                        className={`border-2 rounded-full bg-pink-700 hover:bg-pink-600 w-6 h-6 focus:outline-none ${
+                          color === "pink" ? "border-black" : "border-gray-300"
+                        }`}></button>
+                    )}
 
-                      {Object.keys(variants).includes('yellow') && Object.keys(variants['yellow']).includes(size) && <button onClick={()=>{refreshVariant(size, 'yellow')}} className={`border-2 rounded-full bg-none bg-yellow-400 hover:bg-yellow-500 w-6 h-6 focus:outline-none ${color==='yellow'? 'border-black' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("green") &&
+                    Object.keys(variants["green"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "green");
+                        }}
+                        className={`border-2 rounded-full bg-green-700 hover:bg-green-600 w-6 h-6 focus:outline-none ${
+                          color === "green" ? "border-black" : "border-gray-300"
+                        }`}></button>
+                    )}
 
-                    
+                  {Object.keys(variants).includes("yellow") &&
+                    Object.keys(variants["yellow"]).includes(size) && (
+                      <button
+                        onClick={() => {
+                          refreshVariant(size, "yellow");
+                        }}
+                        className={`border-2 rounded-full bg-yellow-400 hover:bg-yellow-500 w-6 h-6 focus:outline-none ${
+                          color === "yellow"
+                            ? "border-black"
+                            : "border-gray-300"
+                        }`}></button>
+                    )}
                 </div>
                 <div className="flex ml-6 items-center">
                   <span className="mr-3">Size</span>
                   <div className="relative">
-                  <select value={size} onChange={(e)=>{refreshVariant(e.target.value,color)}} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                    
-                      {Object.keys(variants[color]).includes('S') && <option value={'S'}>S</option>}
-                      {Object.keys(variants[color]).includes('M') && <option value={'M'}>M</option>}
-                      {Object.keys(variants[color]).includes('L') && <option value={'L'}>L</option>}
-                      {Object.keys(variants[color]).includes('XL') && <option value={'XL'}>XL</option>}
-                      {Object.keys(variants[color]).includes('XXL') && <option value={'XXL'}>XXL</option>}
-                    
+                    <select
+                      value={size}
+                      onChange={(e) => {
+                        refreshVariant(e.target.value, color);
+                      }}
+                      className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                      {Object.keys(variants[color]).includes("S") && (
+                        <option value={"S"}>S</option>
+                      )}
+                      {Object.keys(variants[color]).includes("M") && (
+                        <option value={"M"}>M</option>
+                      )}
+                      {Object.keys(variants[color]).includes("L") && (
+                        <option value={"L"}>L</option>
+                      )}
+                      {Object.keys(variants[color]).includes("XL") && (
+                        <option value={"XL"}>XL</option>
+                      )}
+                      {Object.keys(variants[color]).includes("XXL") && (
+                        <option value={"XXL"}>XXL</option>
+                      )}
                     </select>
                     <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                       <svg
@@ -198,7 +308,11 @@ const Post = ({ addToCart, product, variants }) => {
                 <span className=" font-medium text-2xl text-gray-900">
                   ${product.price}
                 </span>
-                <button className="flex ml-4 text-white text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
+                <button
+                  onClick={() =>
+                    buyNow(slug, 1, product.price, product.title, size, color)
+                  }
+                  className="flex ml-4 text-white text-sm  border-0 py-2 px-2 focus:outline-none  rounded">
                   Buy Now
                 </button>
                 <button
@@ -265,22 +379,23 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let product = await Product.findOne({slug: context.query.slug});
-  let variants = await Product.find({title: product.title});
-  let colorSizeSlug= {}
-  for(let item of variants){
-        if(Object.keys(colorSizeSlug).includes(item.color)){
-          colorSizeSlug[item.color][item.size] = {slug: item.slug}
-        }
-        else{
-          colorSizeSlug[item.color]= {}
-          colorSizeSlug[item.color][item.size] = {slug: item.slug}
-        }
+  let product = await Product.findOne({ slug: context.query.slug });
+  let variants = await Product.find({ title: product.title });
+  let colorSizeSlug = {};
+  for (let item of variants) {
+    if (Object.keys(colorSizeSlug).includes(item.color)) {
+      colorSizeSlug[item.color][item.size] = { slug: item.slug };
+    } else {
+      colorSizeSlug[item.color] = {};
+      colorSizeSlug[item.color][item.size] = { slug: item.slug };
+    }
   }
-  
 
   return {
-    props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) }, // will be passed to the page component as props
+    props: {
+      product: JSON.parse(JSON.stringify(product)),
+      variants: JSON.parse(JSON.stringify(colorSizeSlug)),
+    }, // will be passed to the page component as props
   };
 }
 
