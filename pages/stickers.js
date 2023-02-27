@@ -3,16 +3,16 @@ import React from "react";
 import Product from "../models/Product";
 import mongoose from "mongoose";
 
-const Mugs = ({ products }) => {
+const Stickers = ({ products }) => {
   console.log(products);
   return (
     <div>
-      <h2 className="text-center my-5">mugs</h2>
+      <h2 className="text-center my-5">stickers</h2>
       <section className="text-gray-600 ">
         <div className=" px-5  mx-auto">
           {Object.keys(products).length === 0 && (
             <h6 className="text-center font-normal h-[50vh]">
-              Sorry! No mugs available. Stay Tuned with us for new
+              Sorry! No stickers available. Stay Tuned with us for new
               collection.
             </h6>
           )}
@@ -106,34 +106,34 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "mugs" });
-  let mugs = {};
+  let products = await Product.find({ category: "stickers" });
+  let stickers = {};
   for (let item of products) {
-    if (item.title in mugs) {
+    if (item.title in stickers) {
       if (
-        !mugs[item.title].color.includes(item.color) &&
+        !stickers[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        mugs[item.title].color.push(item.color);
+        stickers[item.title].color.push(item.color);
       }
       if (
-        !mugs[item.title].size.includes(item.size) &&
+        !stickers[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        mugs[item.title].size.push(item.size);
+        stickers[item.title].size.push(item.size);
       }
     } else {
-      mugs[item.title] = JSON.parse(JSON.stringify(item));
+      stickers[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        mugs[item.title].color = [item.color];
-        mugs[item.title].size = [item.size];
+        stickers[item.title].color = [item.color];
+        stickers[item.title].size = [item.size];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(mugs)) }, // will be passed to the page component as props
+    props: { products: JSON.parse(JSON.stringify(stickers)) }, // will be passed to the page component as props
   };
 }
 
-export default Mugs;
+export default Stickers;
