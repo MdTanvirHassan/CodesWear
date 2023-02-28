@@ -20,7 +20,7 @@ const handler = async (req, res) => {
     }
     res.status(200).json({ success: "success!" });
   } else {
-    res.status(200).json({ error: "error! This method is not allowed." });
+    res.status(400).json({ error: "error! This method is not allowed." });
   }
   let products = await Product.find();
 };
