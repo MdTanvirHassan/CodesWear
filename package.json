@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.4",
+    "crypto-js": "^4.1.1",
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.3.8",
     "mongoose": "^6.9.1",
